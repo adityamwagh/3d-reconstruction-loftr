@@ -53,10 +53,7 @@ default_cfg = {'backbone_type': 'ResNetFPN',
 
 
 class LoFTR(nn.Module):
-    r"""Module, which finds correspondences between two images.
-
-    This is based on the original code from paper "LoFTR: Detector-Free Local
-    Feature Matching with Transformers". See :cite:`LoFTR2021` for more details.
+    """Module, which finds correspondences between two images.
 
     If the distance matrix dm is not provided, :py:func:`torch.cdist` is used.
 
@@ -68,16 +65,9 @@ class LoFTR(nn.Module):
 
     Returns:
         Dictionary with image correspondences and confidence scores.
-
-    Example:
-        >>> img1 = torch.rand(1, 1, 320, 200)
-        >>> img2 = torch.rand(1, 1, 128, 128)
-        >>> input = {"image0": img1, "image1": img2}
-        >>> loftr = LoFTR('outdoor')
-        >>> out = loftr(input)
     """
 
-    def __init__(self, pretrained: Optional[str] = 'outdoor', config: Dict = default_cfg):
+    def __init__(self, pretrained: Optional[str] = None, config: Dict = default_cfg):
         super().__init__()
         # Misc
         self.config = config
