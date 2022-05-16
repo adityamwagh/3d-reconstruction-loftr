@@ -1,3 +1,9 @@
+# Project Description 
+
+The process to reconstruct 3D objects and buildings from images is called Structure-from-Motion (SfM). Typically, these images are captured by skilled operators under controlled conditions, ensuring homogeneous, high-quality data. It is much more difficult to build 3D models from assorted images, given a wide variety of viewpoints, lighting and weather conditions, occlusions from people and vehicles, and even user-applied filters. The first part of the problem is to identify which parts of two images capture the same physical points of a scene, such as the corners of a window. This is typically achieved with local features. Feature matching refers to finding corresponding features from two similar images based on a search distance algorithm. One of the images is considered the source and the other as target, and the feature matching technique is used to either find or derive and transfer attributes from source to target image. The feature matching process generally analyses the source and target’s image topology, detects the feature patterns, matches the patterns, and matches the features within the discovered patterns. The accuracy of feature matching depends on image similarity, complexity, and quality. Normally, a high percentage of successful matching can be achieved using the correct method, while uncertainty and errors may occur and would require post-inspection and corrections. 
+
+The aim of this projecy is to find matching points between two images (views) of a same scene by obtaining the fundamental matrix, and hence the relative pose between the two images. It is important because it’s the first step for 3D Reconstruction, Simultaneous Localization and Mapping, and Panoramic Stitching.
+
 # Usage
 
 # File Structure
