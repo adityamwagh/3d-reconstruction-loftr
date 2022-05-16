@@ -128,5 +128,12 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# exclude large files
 image-matching-challenge-2022
 image-matching-challenge-2022.zip
+depth-masks-imc2022
+imc-gt
+
+*.zip
+
+
