@@ -36,3 +36,8 @@ The percentage of image pairs that meet every pair of thresholds is calculated, 
 ![image](https://user-images.githubusercontent.com/39590621/168455303-0906b0fd-65d8-4c32-9cd3-2e897f937bbd.png)
 ![image](https://user-images.githubusercontent.com/39590621/168455307-ef82d064-8cfb-4a2d-bce7-39141535bf46.png)
 ![image](https://user-images.githubusercontent.com/39590621/168455311-46207aff-fdff-4a7f-a7d7-d17e455ecf25.png)
+
+# Observations & Conclusions
+* Transformers can provide a much better estimate of the pose between two cameras, compared to traditional methods.
+* Because of the positional encoding aspect, Transformers are a very good way to distinguish locally similar features from globally similar features between two images of a scene across wide baseline.
+* This enables more robust image matching for multiple computer vision tasks like 3D Reconstruction, SLAM, SfM & Panoramic Stitching. 
