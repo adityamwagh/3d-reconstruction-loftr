@@ -48,8 +48,12 @@ Please make sure you **follow this specific file structure** mentioned here. The
 ```
 ## Dataset
 
-This challenge has a train and a test dataset. The training set contains thousands of images from 16 locations, all of which are popular tourist attractions. This includes the likes of Buckingham Palace, the Lincoln Memoria, Notre Dame Cathedral, the Taj Mahal, and the Pantheon. In addition to theimages, they provide two csv files. The calibration file contains the camera calibration matrices that are necessary for building fundamental matrices. The pair covisibility file contains the covisibility metric between pairs of images and the ground truth fundamental matrices for each pair. The test set contains 3 image pairs that contestants are to generate fundamental matrices for to demonstrate the submissions. 
-![image](https://user-images.githubusercontent.com/39590621/168615651-16a5faaf-d444-4bde-ae53-baf4e97581c2.png)
+<div align=center>
+<img src="https://user-images.githubusercontent.com/39590621/168615651-16a5faaf-d444-4bde-ae53-baf4e97581c2.png">
+</div>
+<br>
+
+The training set contains thousands of images from 16 locations, all of which are popular tourist attractions. This includes the likes of Buckingham Palace, the Lincoln Memoria, Notre Dame Cathedral, the Taj Mahal, and the Pantheon. In addition to theimages, they provide two csv files. The calibration file contains the camera calibration matrices that are necessary for building fundamental matrices. The pair covisibility file contains the covisibility metric between pairs of images and the ground truth fundamental matrices for each pair. The test set contains 3 image pairs that contestants are to generate fundamental matrices for to demonstrate the submissions. 
 
 ## Kornia
 
