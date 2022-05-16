@@ -4,15 +4,59 @@ The process to reconstruct 3D objects and buildings from images is called Struct
 
 The aim of this project is to find matching points between two images (views) of a same scene by obtaining the fundamental matrix, and hence the relative pose between the two images. It is important because it’s the first step for 3D Reconstruction, Simultaneous Localization and Mapping, and Panoramic Stitching.
 
-# File Structure
+## Usage
 
+Steps to create environment
+```bash
+# create a conda environment. Python version 3.9 is necessary.
+conda create -n loftr python=3.9
+
+# install relevant libraries
+conda install pytorch torchvision kornia einops pandas matplotlib opencv loguru -c pytorch
+pip install pytorch_lightning kornia_moons
+```
+## File Structure
+Please make sure you **follow this specific file structure** mentioned here. The dataset and other relevant files can be found [here](https://drive.google.com/drive/folders/1-zAaqigu1OWFG6PhUg51aIcKRk9gkByh?usp=sharing).
+
+```
+.
+├── depth-masks-imc2022
+│  └── depth_maps
+├── evaluation-notebook.ipynb
+├── image-matching-challenge-2022
+│  ├── sample_submission.csv
+│  ├── test.csv
+│  ├── test_images
+│  └── train
+├── imc-gt
+│  └── train.csv
+├── kornia-loftr
+│  ├── kornia-0.6.4-py2.py3-none-any.whl
+│  ├── kornia_moons-0.1.9-py3-none-any.whl
+│  ├── loftr_outdoor.ckpt
+│  ├── outdoor_ds.ckpt
+│  └── outdoor_ot.ckpt
+├── loftrutils
+│  ├── einops-0.4.1-py3-none-any.whl
+│  ├── LoFTR-master
+│  └── outdoor_ds.ckpt
+├── README.md
+├── train.py
+├── training-notebook.ipynb
+└── weights
+   └── model_weights.ckpt
+```
 ## Dataset
 
 This challenge has a train and a test dataset. The training set contains thousands of images from 16 locations, all of which are popular tourist attractions. This includes the likes of Buckingham Palace, the Lincoln Memoria, Notre Dame Cathedral, the Taj Mahal, and the Pantheon. In addition to theimages, they provide two csv files. The calibration file contains the camera calibration matrices that are necessary for building fundamental matrices. The pair covisibility file contains the covisibility metric between pairs of images and the ground truth fundamental matrices for each pair. The test set contains 3 image pairs that contestants are to generate fundamental matrices for to demonstrate the submissions. 
 ![image](https://user-images.githubusercontent.com/39590621/168615651-16a5faaf-d444-4bde-ae53-baf4e97581c2.png)
 
 ## Kornia
-![image](https://user-images.githubusercontent.com/39590621/168612245-70119dea-53e5-4ea3-b8ba-d27bccfac941.png)
+
+<div align=center>
+<img src="https://user-images.githubusercontent.com/39590621/168612245-70119dea-53e5-4ea3-b8ba-d27bccfac941.png">
+</div>
+<br>
 
 Kornia is a differentiable library that allows classical computer vision to be integrated into deep learning models. It consists of a set of routines and differentiable modules to solve generic computer vision problems. At its core, the package uses PyTorch as its main backend both for efficiency and to take advantage of the reverse-mode auto-differentiation to define and compute the gradient of complex functions.Kornea has a golden rule of not having heavy dependencies. Kornia module provides a number of descriptors including the SIFT (Scale-Invariant Feature Transform) descriptor, MKDDescriptor (multiple kerneldescriptor), HardNet descriptor, HardNet8 descriptor, HyNet descriptor, SOSNet (Second-Order Similarity) descriptor, and TFeat descriptor.
 
@@ -20,8 +64,10 @@ Kornia is a differentiable library that allows classical computer vision to be i
 
 LoFTR (Local Feature TRansformer) is a Framework that provides a method for image feature matching. Instead of performing image processing methods such as image feature detection, description, and matching one by one sequentially, it first establishes a pixel-wise dense match and later refines the matches. In contrast to traditional methods that use a cost volume to search corresponding matches, the framework uses self and cross attention layers from its Transformer model to obtain feature descriptors present on both images. The global receptive field provided by Transformer enables LoFTR to produce dense matches in even low-texture areas, where traditional feature detectors usually struggle to produce repeatable interest points. Furthermore, the framework model comes pre-trained on indoor and outdoor datasets to detect the kind of image being analyzed, with features like self-attention. Hence, it   makes LoFTR outperform other state-of-the-art methods by a large margin. 
 
-![image](https://user-images.githubusercontent.com/39590621/168614880-48bb08e3-8553-4d80-b7b1-54175c247d8a.png)
-
+<div align=center>
+<img src="https://user-images.githubusercontent.com/39590621/168614880-48bb08e3-8553-4d80-b7b1-54175c247d8a.png">
+</div>
+<br>
 
 LoFTR has the following steps: 
 
@@ -37,9 +83,11 @@ The percentage of image pairs that meet every pair of thresholds is calculated, 
 
 # Results
 
-![image](https://user-images.githubusercontent.com/39590621/168455303-0906b0fd-65d8-4c32-9cd3-2e897f937bbd.png)
-![image](https://user-images.githubusercontent.com/39590621/168455307-ef82d064-8cfb-4a2d-bce7-39141535bf46.png)
-![image](https://user-images.githubusercontent.com/39590621/168455311-46207aff-fdff-4a7f-a7d7-d17e455ecf25.png)
+<div align=center>
+<img src="results/res1.png">
+<img src="results/res2.png">
+<img src="results/res3.png">
+</div>
 
 # Observations & Conclusions
 * Transformers can provide a much better estimate of the pose between two cameras, compared to traditional methods.
