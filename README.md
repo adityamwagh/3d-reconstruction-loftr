@@ -87,6 +87,8 @@ The percentage of image pairs that meet every pair of thresholds is calculated, 
 
 # Results
 
+The mAA value for our model is 0.725 across all the scenes In the dataset.
+
 <div align=center>
 <img src="results/res1.png">
 <img src="results/res2.png">
